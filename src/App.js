@@ -1,14 +1,37 @@
-import React from 'react';
-import Title from './context_api/Title';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-export const Context = React.createContext()
-const myColor = { color: 'lightsalmon', text: '我最喜歡的顏色'}
+import ContextApi from "./context_api/index";
+import PropTypes from "./propTypes/index";
+
+const linkStyle = {
+  margin: "0 5px"
+};
 function App() {
-  return(
-    <Context.Provider value={myColor}>
-      <Title />
-    </Context.Provider>
-  )
+  return (
+    <>
+      <Router>
+        <Link to="/contextApi" style={linkStyle}>
+          ContextApi
+        </Link>
+        <Link to="/propTypes" style={linkStyle}>
+          PropTypes
+        </Link>
+
+        <Switch>
+          <Route path="/contextApi" component={ContextApi} />
+          <Route
+            path="/propTypes"
+            render={props => (
+              <PropTypes
+                {...props} //name={"Felicia"}
+              />
+            )}
+          />
+        </Switch>
+      </Router>
+    </>
+  );
 }
 
-export default App
+export default App;
