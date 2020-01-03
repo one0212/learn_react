@@ -8,8 +8,22 @@ import "antd/dist/antd.css";
 class ReduxTodoList extends Component {
   constructor(props) {
     super(props)
-    // console.log(store.getState())
     this.state = store.getState()
+    store.subscribe(this.storeChange)
+  }
+  changeInputValue = e => {
+    // 建立action
+    const action = {
+      // action的名字用以調用
+      type: 'changeInput',
+      value: e.target.value
+    }
+    // 將action傳遞過去reducer
+    store.dispatch(action)
+  }
+
+  storeChange = () =>{
+    this.setState(store.getState())
   }
   render() {
     return (
@@ -18,6 +32,8 @@ class ReduxTodoList extends Component {
           <Input
             placeholder={this.state.inputValue}
             style={{ width: "250px", marginRight: "10px" }}
+            onChange={this.changeInputValue}
+            value={this.state.inputValue}
           />
           <Button type="primary">新增</Button>
         </div>
