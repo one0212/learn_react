@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Input, Button, List } from "antd";
 
 import store from "./store";
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM} from './store/actionTypes';
 import "antd/dist/antd.css";
 
 
@@ -15,7 +16,7 @@ class ReduxTodoList extends Component {
     // 建立action
     const action = {
       // action的名字用以調用
-      type: 'changeInput',
+      type: CHANGE_INPUT,
       value: e.target.value
     }
     // 將action傳遞過去reducer
@@ -27,13 +28,13 @@ class ReduxTodoList extends Component {
   }
 
   addItem = () => {
-    const action = {type: 'addItem'}
+    const action = {type: ADD_ITEM}
     store.dispatch(action)
   }
 
   deleteItem(index) {
     const action = {
-      type: 'deleteItem',
+      type: DELETE_ITEM,
       index
     }
     store.dispatch(action)
