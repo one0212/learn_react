@@ -25,6 +25,11 @@ class ReduxTodoList extends Component {
   storeChange = () =>{
     this.setState(store.getState())
   }
+
+  clickBtn = () => {
+    const action = {type: 'addItem'}
+    store.dispatch(action)
+  }
   render() {
     return (
       <div style={{ margin: "10px" }}>
@@ -35,7 +40,10 @@ class ReduxTodoList extends Component {
             onChange={this.changeInputValue}
             value={this.state.inputValue}
           />
-          <Button type="primary">新增</Button>
+          <Button 
+          type="primary"
+          onClick={this.clickBtn}
+          >新增</Button>
         </div>
         <div style={{ margin: "10px", width: "300px" }}>
           <List
