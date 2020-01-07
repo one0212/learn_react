@@ -14,7 +14,6 @@ class ReduxTodoList extends Component {
     store.subscribe(this.storeChange)
   }
   changeInputValue = e => {
-    // 建立action
     const action = changeInputAction(e.target.value)
     // 將action傳遞過去reducer
     store.dispatch(action)
