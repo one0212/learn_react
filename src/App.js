@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import ContextApi from "./context_api/index";
 import PropTypes from "./propTypes/index";
 import ReduxTodoList from './redux/todoList/index';
+import Counter from './redux/counter/index';
 
 const linkStyle = {
   margin: "0 5px"
@@ -21,6 +22,9 @@ function App() {
         <Link to="/reduxTodoList" style={linkStyle}>
         ReduxTodoList
         </Link>
+        <Link to="/counter" style={linkStyle}>
+        Counter
+        </Link>
 
         <Switch>
           <Route path="/contextApi" component={ContextApi} />
@@ -33,6 +37,8 @@ function App() {
             )}
           />
           <Route path="/reduxTodoList" component={ReduxTodoList} />
+          <Route path="/counter" component={Counter} />
+
         </Switch>
       </Router>
     </>
