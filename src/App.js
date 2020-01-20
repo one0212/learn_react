@@ -1,17 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Provider } from 'react-redux';
 
-import ContextApi from "./context_api/index";
-import PropTypes from "./propTypes/index";
-import ReduxTodoList from './redux/todoList/index';
-import Counter from './redux/counter/index';
+import ContextApi from "./context_api";
+import PropTypes from "./propTypes";
+import ReduxTodoList from './redux/todoList';
+import store from './redux/counter/store';
+import Counter from './redux/counter';
+
 
 const linkStyle = {
   margin: "0 5px"
 };
 function App() {
   return ( 
-    <>
+    <Provider store={store}>
       <Router>
         <Link to="/contextApi" style={linkStyle}>
           ContextApi
@@ -41,7 +44,7 @@ function App() {
 
         </Switch>
       </Router>
-    </>
+    </Provider>
   );
 }
 
